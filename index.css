@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.container{
+    width: 33.6rem;
+    height: 23.6rem;
+    margin: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.todoApp__top-yellow{
+    background-color: yellow;
+    height: 2.8rem;
+}
+
+.todoApp__app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-input{
+    position: relative;
+}
+.todoApp__input{
+    width: 28.6rem;
+    height: 4rem;
+
+    border: 1px solid #c4c4c4;
+    border-radius: 1rem;
+}
+
+.xmark{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.sort-icon{
+    align-self: flex-end;
+    margin: 0 1.6rem 0.3rem 0;
+    cursor: pointer;
+}
+
+.button{
+    cursor: pointer;
+    margin-top: 1.8rem;
+    position: relative;
+    display: flex;
+    width: 15rem;
+    height: 4.2rem;
+
+    background-color: #833ae0;
+    border-radius: 8.4rem;
+}
+
+.button__icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    width: 4.2rem;
+    border-radius: 50%;
+    background-color:#9953F1;
+    color: #fff;
+}
+
+.button h3{
+    font-weight: 300;
+    color: #fff;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    font-size: medium;
+    transform: translate(calc((100% - 4.2rem) - 50%), -50%);
+}
+
+.hide{
+    display: none;
+}
