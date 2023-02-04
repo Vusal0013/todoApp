@@ -133,3 +133,7 @@ html{
 .hide{
     display: none;
 }
+
+.line-through{
+    text-decoration: line-through;
+}

@@ -12,49 +12,60 @@ const sortComp = document.getElementById("completed");
 
 let allTasks = localStorage.getItem("taskList") === null ? [] : JSON.parse(localStorage.getItem("taskList"));
 
+let taskList; 
 
+const sortStatusType = (sortType) => {
+    if(sortType === "pending" || sortType === "completed"){
+        allTasks = allTasks.filter(item => item.status === sortType)
+    }
+}
 
+sortsType.forEach(item => {
+    item.addEventListener("click", () => {
+        sortsType.forEach(itemclass => {
+            itemclass.classList.contains("selected-sort") && itemclass.classList.remove("selected-sort")
+        })
+        item.classList.add("selected-sort")
+        sortStatusType(item.getAttribute("status"));
+        displayTasks()
+        allTasks = JSON.parse(localStorage.getItem("taskList"))
+    })
+}) 
+const updateTaskStatus = (id, element) => {
+    allTasks.forEach(task => {
+        if(task.id === id) {
+                if(element.checked){
+                    task.status = "completed"
+                    element.nextElementSibling.classList.add("line-through")
+                }
+                else {
+                    task.status = "pending"
+                    element.nextElementSibling.classList.remove("line-through")
+                }
+        }
+    })
+    
+    displayTasks()
+    localStorage.setItem("taskList", JSON.stringify(allTasks))
+}
 
 // allTasks icindeki elementleri (tasklari) htmle gonderir
+
 const displayTasks = () => {
 
-    let taskList;
-
-    const sortStatusType = (sortType) => {
-        if(sortType === "pending" || sortType === "completed"){
-            taskList = allTasks.filter(item => item.status === sortType)
-        } else taskList = allTasks;
-    }
-    console.log(taskList)
-    
-    const updateTaskStatus = () => {
-        sortsType.forEach(item => {
-            item.addEventListener("click", () => {
-                sortStatusType(item.getAttribute("status"));
-                sortsType.forEach(itemclass => {
-                    itemclass.classList.contains("selected-sort") && itemclass.classList.remove("selected-sort")
-                })
-                item.classList.add("selected-sort")
-            })
-        })
-    }
-
-    updateTaskStatus()
 
     let html = "";
 
-    taskList.forEach(task => {
+    allTasks.forEach(task => {
         html +=
         `
         <div class="container-input">
-            <input type="checkbox" name="" id=${task.id}>
-            <input type="text" onblur="editTask(${task.id}, this.value)" value="${task.value}" class="todoApp__input">
+            <input ${task.status === "completed" ? "checked" : ""} onclick="updateTaskStatus(${task.id}, this)" type="checkbox" name="">
+            <input id=${task.id} type="text" onblur="editTask(${task.id}, this.value)" value="${task.value}" class="todoApp__input">
             <i onclick=deleteTask(${task.id}) class="fa-regular fa-circle-xmark fa-2x xmark"></i>
         </div>
         `
     })
-
-    localStorage.setItem("taskList", JSON.stringify(allTasks))
 
     containerTasks.innerHTML = html
 }
@@ -81,7 +92,7 @@ const addTask = () => {
     }
 
     allTasks.push(task);
-
+    localStorage.setItem("taskList", JSON.stringify(allTasks))
     displayTasks()
 }
 
@@ -93,6 +104,8 @@ const deleteTask = (id) => {
     allTasks.forEach((task, index) => {
         if(id === task.id) allTasks.splice(index, 1) 
     })
+
+    localStorage.setItem("taskList", JSON.stringify(allTasks))
     displayTasks();
 }
 
@@ -101,7 +114,8 @@ const editTask = (id, value) => {
     allTasks.forEach(task => {
         if(task.id === id) task.value = value
     })
-    displayTasks()
+
+    localStorage.setItem("taskList", JSON.stringify(allTasks))
 }
 
 let sortAZ = false;
