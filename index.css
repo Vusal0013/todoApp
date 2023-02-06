@@ -73,7 +73,7 @@ html{
     color: #C4C4C4;
     transition: all 0.2s;
 }
-.sortType > h3:hover, .sortAZ:hover {
+.sortType > h3:hover, .sortAZ:hover, .deleteAll:hover {
     color: #000;
     transition: all 0.2s;
 }
@@ -93,6 +93,17 @@ html{
 }
 .sortType > h3{
     cursor: pointer;
+}
+
+.container-deleteAll-sortAZ{
+    display: flex;
+}
+
+.deleteAll{
+    cursor: pointer;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
 }
 .button{
     cursor: pointer;
