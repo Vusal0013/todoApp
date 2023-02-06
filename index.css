@@ -8,7 +8,7 @@ html{
 
 .container{
     width: 33.6rem;
-    height: 23.6rem;
+    min-height: 23.6rem;
     margin: auto;
     border-radius: 1rem;
     overflow: hidden;
@@ -31,24 +31,80 @@ html{
 .todoApp__input{
     width: 28.6rem;
     height: 4rem;
-
-    border: 1px solid #c4c4c4;
     border-radius: 1rem;
+    border: 1px solid #fff;
+    transition: all 0.3s;
+}
+.todoApp__input:hover{
+    border: 1px solid #c4c4c4;
+    transition: all 0.3s;
+}
+.todoApp__input:hover + .xmark{
+    opacity: 1;
+    transition: all 0.3s;
 }
 
 .xmark{
+    opacity: 0;
     position: absolute;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
     cursor: pointer;
+    transition: all 0.3s;
 }
-.sort-icon{
-    align-self: flex-end;
-    margin: 0 1.6rem 0.3rem 0;
+.xmark:hover{
+    opacity: 1;
+}
+.sortAZ{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.sorts{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+    color: #C4C4C4;
+}
+.sortType > h3, .sortAZ{
+    color: #C4C4C4;
+    transition: all 0.2s;
+}
+.sortType > h3:hover, .sortAZ:hover, .deleteAll:hover {
+    color: #000;
+    transition: all 0.2s;
+}
+.sortType > .selected-sort{
+    color: #000;
+}
+
+.container-tasks{
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+}
+
+.sortType{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.sortType > h3{
     cursor: pointer;
 }
 
+.container-deleteAll-sortAZ{
+    display: flex;
+}
+
+.deleteAll{
+    cursor: pointer;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
 .button{
     cursor: pointer;
     margin-top: 1.8rem;
@@ -87,4 +143,8 @@ html{
 
 .hide{
     display: none;
+}
+
+.line-through{
+    text-decoration: line-through;
 }

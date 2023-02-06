@@ -17,10 +17,16 @@
             <h1 class="todoApp__header">To-Do List</h1>
             <!-- <i class="fa-solid fa-arrow-down-wide-short"></i> -->
             <!-- <i class="fa-solid fa-arrow-down-short-wide"></i> -->
-            <div class="sort-icon"><i class="fa-solid fa-arrow-down-wide-short fa-2x"></i></div>
-            <div class="container-input hide">
-                <i class="fa-regular fa-circle-xmark fa-2x xmark"></i>
-                <input type="text" class="todoApp__input">
+            <div class="sorts">
+                <div class="sortType">
+                    <h3 id="all" status="all">All</h3>
+                    <h3 id="pending" status="pending">Pending</h3>
+                    <h3 id="completed" status="completed">Completed</h3>
+                </div>
+                <div class="container-deleteAll-sortAZ">
+                    <div class="deleteAll"><i class="fa-solid fa-trash fa-2x"></i></div>
+                    <div class="sortAZ"><i class="fa-solid fa-arrow-down-wide-short fa-2x"></i></div>
+                </div>
             </div>
             <div class="container-tasks">
                 
